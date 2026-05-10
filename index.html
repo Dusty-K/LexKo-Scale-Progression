@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexKo - Music Production Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi"></script>
+</head>
+
+<body>
+    <div class="background-mesh"></div>
+    <div class="app-container">
+        <header class="glass-panel">
+            <div class="logo">
+                <span class="logo-icon">🎹</span>
+                <h1>LexKo <span class="subtitle">Assistant</span></h1>
+            </div>
+            <div class="status-indicator">
+                <div class="dot"></div> Audio Engine Ready
+            </div>
+        </header>
+
+        <main>
+            <div class="top-row" style="grid-template-columns: 1fr;">
+                <!-- Controls Area (Horizontal) -->
+                <section class="controls-panel glass-panel horizontal-controls">
+                    <div class="control-group" style="width: 100%; margin-bottom: -1rem;">
+                        <label for="quick-search">Quick Search (e.g. Cm, F# maj, Ab minor)</label>
+                        <input type="text" id="quick-search" class="modern-input" placeholder="Type a scale..."
+                            style="width: 100%; max-width: 400px; font-size: 1.1rem; font-weight: bold; color: var(--primary-hover);">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Key (Root Note)</label>
+                        <div class="key-selector-group" style="display: flex; gap: 1rem;">
+                            <div class="circle-keys" id="base-keys">
+                                <button class="base-key-btn active" data-val="C">C</button>
+                                <button class="base-key-btn" data-val="D">D</button>
+                                <button class="base-key-btn" data-val="E">E</button>
+                                <button class="base-key-btn" data-val="F">F</button>
+                                <button class="base-key-btn" data-val="G">G</button>
+                                <button class="base-key-btn" data-val="A">A</button>
+                                <button class="base-key-btn" data-val="B">B</button>
+                            </div>
+                            <div class="circle-keys" id="accidental-keys"
+                                style="border-left: 1px solid var(--panel-border); padding-left: 1rem;">
+                                <button class="accidental-btn active" data-val="">♮</button>
+                                <button class="accidental-btn" data-val="#">♯</button>
+                                <button class="accidental-btn" data-val="b">♭</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Scale Type</label>
+                        <div class="scale-type-group">
+                            <button class="type-btn active" data-val="major">Major</button>
+                            <button class="type-btn" data-val="minor">Minor</button>
+                            <select id="scale-type-other" class="modern-select small-select">
+                                <option value="">Others...</option>
+                                <option value="dorian">Dorian</option>
+                                <option value="phrygian">Phrygian</option>
+                                <option value="lydian">Lydian</option>
+                                <option value="mixolydian">Mixolydian</option>
+                                <option value="locrian">Locrian</option>
+                                <option value="harmonic minor">Harmonic Minor</option>
+                                <option value="melodic minor">Melodic Minor</option>
+                                <option value="major pentatonic">Major Pentatonic</option>
+                                <option value="minor pentatonic">Minor Pentatonic</option>
+                                <option value="blues">Blues</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Note Display</label>
+                        <div class="scale-type-group">
+                            <button class="display-btn active" data-val="theory">Theory (Mix)</button>
+                            <button class="display-btn" data-val="sharp">All ♯</button>
+                            <button class="display-btn" data-val="flat">All ♭</button>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Results & Visualizer Area -->
+                <section class="visualizer-panel glass-panel" style="padding-top: 1rem;">
+                    <div class="panel-header" style="justify-content: flex-start; gap: 2rem; flex-wrap: wrap;">
+                        <div class="info-card"
+                            style="margin: 0; padding: 1rem 2rem; flex: 1; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4);">
+                            <div>
+                                <h3 id="current-scale-name" style="margin: 0; font-size: 2rem;">C Major</h3>
+                                <p id="current-scale-notes" class="notes-display" style="margin-top: 0.5rem;">C D E F G
+                                    A B</p>
+                            </div>
+                            <div class="actions-group" style="flex-direction: row; margin: 0; align-items: center;">
+                                <button id="btn-play-scale" class="btn primary-btn"><span class="icon">▶</span> Play
+                                    Scale</button>
+                                <button id="btn-download-midi" class="btn secondary-btn"><span class="icon">📥</span>
+                                    MIDI</button>
+                                <button id="btn-toggle-piano" class="btn secondary-btn"
+                                    style="border-color: rgba(255,255,255,0.4);">🎹 Toggle Piano</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Piano Container (Collapsible) -->
+                    <div id="piano-section" class="piano-section collapsed">
+                        <div class="octave-controls" style="margin-bottom: 1rem; display: inline-flex;">
+                            <button id="btn-octave-down" class="btn-small">- Oct</button>
+                            <span id="current-octave">C3 - C5</span>
+                            <button id="btn-octave-up" class="btn-small">+ Oct</button>
+                        </div>
+                        <div class="piano-wrapper">
+                            <div id="piano-container" class="piano">
+                                <!-- Keys generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Progression Studio Area -->
+            <section class="progression-panel glass-panel">
+                <div class="panel-header"
+                    style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <h2>Chord Progression Studio</h2>
+                    <div class="control-group" style="flex-direction: row; align-items: center; gap: 0.5rem;">
+                        <label for="instrument-select" style="margin: 0;">Instrument</label>
+                        <select id="instrument-select" class="modern-select" style="padding: 0.5rem;">
+                            <option value="grand-piano" selected>Realistic Grand Piano</option>
+                            <option value="electric-piano">Electric Piano (Synth)</option>
+                            <option value="synth-lead">Classic Synth</option>
+                            <option value="8bit">8-Bit Retro</option>
+                            <option value="dream-pad">Dream Pad</option>
+                            <option value="pluck">Pluck</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="emotion-presets"
+                    style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 8px;">
+                    <select id="preset-select" class="modern-select"
+                        style="padding: 0.5rem; flex: 1; min-width: 250px;">
+                        <option value="">-- 正在載入和弦庫... (Loading...) --</option>
+                    </select>
+                    <button class="btn btn-secondary" id="btn-random-prog" style="padding: 0.5rem 1rem;"><span
+                            class="icon">🎲</span> Random</button>
+                    <select id="random-scope-select" class="modern-select"
+                        style="padding: 0.5rem; width: auto; min-width: 120px;">
+                        <option value="ALL">🔍 All Categories</option>
+                    </select>
+                </div>
+
+                <div class="progression-input-group">
+                    <label for="progression-input">Roman Numerals (e.g. I vi IV V)</label>
+                    <div class="input-with-button">
+                        <input type="text" id="progression-input" class="modern-input" placeholder="Enter chords..."
+                            value="I vi IV V">
+                        <button id="btn-analyze" class="btn primary-btn">Analyze</button>
+                    </div>
+                </div>
+
+                <div id="chord-results" class="chord-results-container">
+                    <!-- Chord cards injected here -->
+                </div>
+
+                <div class="suggestion-panel" id="suggestion-panel" style="display: none;">
+                    <h4>Chord Suggestions for <span id="sugg-target-chord"></span></h4>
+                    <p id="sugg-content"></p>
+                </div>
+
+                <div class="actions-group progression-actions">
+                    <button id="btn-play-prog" class="btn primary-btn">
+                        <span class="icon">▶</span> Play Progression
+                    </button>
+                    <button id="btn-download-prog-midi" class="btn secondary-btn">
+                        <span class="icon">📥</span> Download Progression MIDI
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="glass-panel">
+            <p>Made with ❤️ for Music Producers &bull; LexKo Suite</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

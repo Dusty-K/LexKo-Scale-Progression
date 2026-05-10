@@ -1,0 +1,1071 @@
+{
+  "categories": [
+    "Basic",
+    "The Big Three",
+    "Japanese Advanced",
+    "Progressions Variations",
+    "Passing & Approach",
+    "Loop & Vibe (Hip-Hop / K-Pop)"
+  ],
+  "progressions": [
+    {
+      "name": "基礎進行 (Basic 1451)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "IV",
+        "V",
+        "I"
+      ]
+    },
+    {
+      "name": "長基礎進行 (1456251)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "IV",
+        "V",
+        "vi",
+        "ii",
+        "V",
+        "I"
+      ]
+    },
+    {
+      "name": "流行四和弦 (Pop Four)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ]
+    },
+    {
+      "name": "藍調進行 (12-Bar Blues)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "I",
+        "I",
+        "I",
+        "IV",
+        "IV",
+        "I",
+        "I",
+        "V",
+        "IV",
+        "I",
+        "V"
+      ]
+    },
+    {
+      "name": "二五一 (251 Cadence)",
+      "category": "Basic",
+      "numerals": [
+        "ii",
+        "V",
+        "I"
+      ]
+    },
+    {
+      "name": "一六四五 (1645)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "vi",
+        "IV",
+        "V"
+      ]
+    },
+    {
+      "name": "一五六四 (1564)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ]
+    },
+    {
+      "name": "小調基礎 (Minor 1451)",
+      "category": "Basic",
+      "numerals": [
+        "i",
+        "iv",
+        "V",
+        "i"
+      ]
+    },
+    {
+      "name": "小調六和弦 (Minor Loop)",
+      "category": "Basic",
+      "numerals": [
+        "i",
+        "VI",
+        "III",
+        "VII"
+      ]
+    },
+    {
+      "name": "教堂進行 (Amen Cadence)",
+      "category": "Basic",
+      "numerals": [
+        "I",
+        "IV",
+        "I",
+        "V"
+      ]
+    },
+    {
+      "name": "卡農進行 (Canon)",
+      "category": "The Big Three",
+      "numerals": [
+        "I",
+        "V",
+        "vi",
+        "iii",
+        "IV",
+        "I",
+        "ii",
+        "V"
+      ]
+    },
+    {
+      "name": "王道進行 (Royal Road / 4536)",
+      "category": "The Big Three",
+      "numerals": [
+        "IV",
+        "V",
+        "iii",
+        "vi"
+      ]
+    },
+    {
+      "name": "小室進行 (Komuro / 6451)",
+      "category": "The Big Three",
+      "numerals": [
+        "vi",
+        "IV",
+        "V",
+        "I"
+      ]
+    },
+    {
+      "name": "動漫卡農 (Anime Canon)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "I",
+        "III7",
+        "vi",
+        "v",
+        "I7",
+        "IV",
+        "V",
+        "iii",
+        "vi"
+      ]
+    },
+    {
+      "name": "馬力歐進行 (Mario Cadence)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "bVI",
+        "bVII",
+        "I"
+      ]
+    },
+    {
+      "name": "獨角仙進行 (Kabutomushi)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "#ivm7b5",
+        "IVm",
+        "iii",
+        "biii"
+      ]
+    },
+    {
+      "name": "半減七根音下行",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "vi",
+        "vi7/5",
+        "#ivm7b5"
+      ]
+    },
+    {
+      "name": "丸さ進行 (Marusa / 4361)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "IV",
+        "III7",
+        "vi",
+        "I"
+      ]
+    },
+    {
+      "name": "456 假終止",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "IV",
+        "V",
+        "vi"
+      ]
+    },
+    {
+      "name": "逆卡農 (Reverse Canon)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "I",
+        "IV",
+        "iii",
+        "vi",
+        "ii",
+        "V",
+        "I",
+        "V"
+      ]
+    },
+    {
+      "name": "山下達郎進行 (Tatsuro Groove)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "Imaj7",
+        "III7",
+        "vi7",
+        "II7",
+        "IVmaj7",
+        "bVII7",
+        "I",
+        "V"
+      ]
+    },
+    {
+      "name": "副屬七轉調 (Secondary Dom Chain)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "VI7",
+        "II7",
+        "V7",
+        "I"
+      ]
+    },
+    {
+      "name": "下行低音線 (Descending Bass)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "I",
+        "I/VII",
+        "I/bVII",
+        "I/VI",
+        "IV",
+        "V"
+      ]
+    },
+    {
+      "name": "拿坡里六和弦 (Neapolitan Approach)",
+      "category": "Japanese Advanced",
+      "numerals": [
+        "i",
+        "bII",
+        "V",
+        "i"
+      ]
+    },
+    {
+      "name": "王道進化 (加入副屬和弦)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "IV",
+        "V",
+        "III7",
+        "vi"
+      ]
+    },
+    {
+      "name": "王道進化 (251到I)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "IV",
+        "V",
+        "iii",
+        "VI7",
+        "ii",
+        "V",
+        "I"
+      ]
+    },
+    {
+      "name": "王道進化 (借用小調四級)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "IV",
+        "iv",
+        "iii",
+        "vi"
+      ]
+    },
+    {
+      "name": "卡農進化 (疊疊樂)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "I",
+        "V/7",
+        "vi7",
+        "I/5",
+        "IVmaj7",
+        "iii7",
+        "ii7",
+        "V"
+      ]
+    },
+    {
+      "name": "小室進化 (加入IVm)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "vi",
+        "IVmaj7",
+        "IVm",
+        "I"
+      ]
+    },
+    {
+      "name": "流行加厚 (Pop Extended)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "Imaj7",
+        "V7sus4",
+        "vi9",
+        "IVadd9"
+      ]
+    },
+    {
+      "name": "情歌四和弦 (Ballad 4536)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "IV",
+        "V",
+        "iii7",
+        "vi",
+        "ii",
+        "V",
+        "I",
+        "I"
+      ]
+    },
+    {
+      "name": "凱旋門進行 (Arc de Triomphe)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "I",
+        "bVII",
+        "IV",
+        "I"
+      ]
+    },
+    {
+      "name": "小調卡農 (Minor Canon)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "i",
+        "v",
+        "VI",
+        "III",
+        "VII",
+        "iv",
+        "V",
+        "i"
+      ]
+    },
+    {
+      "name": "七和弦卡農 (Jazz Canon)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "Imaj7",
+        "V7",
+        "vi7",
+        "iii7",
+        "IVmaj7",
+        "Imaj7",
+        "ii7",
+        "V7"
+      ]
+    },
+    {
+      "name": "降七級借用 (bVII Borrow)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "I",
+        "IV",
+        "bVII",
+        "IV"
+      ]
+    },
+    {
+      "name": "義式終止進化 (Andalusian Extended)",
+      "category": "Progressions Variations",
+      "numerals": [
+        "i",
+        "VII",
+        "VI",
+        "V",
+        "iv",
+        "V",
+        "i"
+      ]
+    },
+    {
+      "name": "半音趨近 (Chromatic Approach)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "IV",
+        "V",
+        "iii",
+        "#vdim",
+        "vi"
+      ]
+    },
+    {
+      "name": "降六小和弦經過 (bVI Passing)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "IV",
+        "V",
+        "iii",
+        "vi",
+        "bvim",
+        "v",
+        "I7",
+        "IV"
+      ]
+    },
+    {
+      "name": "減七經過 (Diminished Walk)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "I",
+        "#Idim7",
+        "ii7",
+        "#IIdim7",
+        "iii7",
+        "IV"
+      ]
+    },
+    {
+      "name": "低音半音下行 (Bass Chromatic Descent)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "i",
+        "imaj7",
+        "i7",
+        "i6",
+        "iv",
+        "V"
+      ]
+    },
+    {
+      "name": "平行大小調交替 (Parallel Major-Minor)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "I",
+        "i",
+        "IV",
+        "iv"
+      ]
+    },
+    {
+      "name": "增四度進行 (Tritone Sub)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "ii",
+        "bII7",
+        "Imaj7"
+      ]
+    },
+    {
+      "name": "鍊式二五 (Cycle of 25)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "iii7",
+        "VI7",
+        "ii7",
+        "V7",
+        "I"
+      ]
+    },
+    {
+      "name": "和聲小調爬升 (Harmonic Minor Climb)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "i",
+        "iidim",
+        "III+",
+        "iv",
+        "V",
+        "i"
+      ]
+    },
+    {
+      "name": "全音階平移 (Whole-Tone Slide)",
+      "category": "Passing & Approach",
+      "numerals": [
+        "I",
+        "II",
+        "III",
+        "V"
+      ]
+    },
+    {
+      "name": "永恆的漂浮 (The Float)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "V/IV",
+        "IVmaj7",
+        "V/IV"
+      ]
+    },
+    {
+      "name": "都市霓虹 (Neon City)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "bVIImaj7",
+        "bVImaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "半音迷霧 (The Fog)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im7",
+        "bIImaj7",
+        "im7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "溫和的迴圈 (Soft Cycle)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "ii7",
+        "IVmaj7",
+        "vi7",
+        "V"
+      ]
+    },
+    {
+      "name": "爵士律動 (The Jazz Groove)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "iim9",
+        "V13",
+        "iim9",
+        "V13"
+      ]
+    },
+    {
+      "name": "穩定的大調色彩 (Sunny Loop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "ii7",
+        "iii7",
+        "ii7"
+      ]
+    },
+    {
+      "name": "莫代爾互換 (The Modal Loop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bVImaj7",
+        "Imaj7",
+        "bVImaj7",
+        "Imaj7"
+      ]
+    },
+    {
+      "name": "靈魂下行 (Soul Descent)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "iv7",
+        "iii7",
+        "iim7",
+        "Imaj7"
+      ]
+    },
+    {
+      "name": "靜止的深淵 (The Static)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "iv9",
+        "im9",
+        "iv9"
+      ]
+    },
+    {
+      "name": "現代流行變體 (Modern Pop Loop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vi7",
+        "IVmaj7",
+        "Imaj7",
+        "V"
+      ]
+    },
+    {
+      "name": "夢核漂移 (Dreamcore Drift)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "bVIImaj7",
+        "bVImaj7",
+        "Imaj7"
+      ]
+    },
+    {
+      "name": "黃昏城市 (Dusk City)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vim9",
+        "IVmaj9",
+        "vim9",
+        "V7sus4"
+      ]
+    },
+    {
+      "name": "雨天咖啡廳 (Rainy Café)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "iii7",
+        "IVmaj7",
+        "iii7"
+      ]
+    },
+    {
+      "name": "孤獨星球 (Lonely Planet)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "bIIImaj7",
+        "im9",
+        "bIIImaj7"
+      ]
+    },
+    {
+      "name": "午夜地鐵 (Midnight Metro)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im7",
+        "bVII7",
+        "bVI7",
+        "V7"
+      ]
+    },
+    {
+      "name": "慢速漩渦 (Slow Vortex)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "iim7",
+        "bIImaj7",
+        "Imaj7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "浮力 (Buoyancy)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "IV9",
+        "Imaj7",
+        "IV9"
+      ]
+    },
+    {
+      "name": "低空飛行 (Low Rider)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "i7",
+        "bVII7",
+        "i7",
+        "bVII7"
+      ]
+    },
+    {
+      "name": "鏡像世界 (Mirror World)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "bVImaj7",
+        "bIIImaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "Neo Soul 搖擺 (Neo Soul Swing)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj9",
+        "III7#9",
+        "vi9",
+        "bVII13"
+      ]
+    },
+    {
+      "name": "失重感 (Weightless)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "I/III",
+        "ii9",
+        "V7sus4"
+      ]
+    },
+    {
+      "name": "凌晨三點 (3 AM)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im7",
+        "im7/bVII",
+        "bVImaj7",
+        "bVII9"
+      ]
+    },
+    {
+      "name": "屋頂派對 (Rooftop Party)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "ii9",
+        "V13",
+        "iii7",
+        "VI7#9"
+      ]
+    },
+    {
+      "name": "透明玻璃 (Clear Glass)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj9",
+        "vi11",
+        "IVmaj7",
+        "ii9"
+      ]
+    },
+    {
+      "name": "沙漠公路 (Desert Highway)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "I5",
+        "bVII5",
+        "bVI5",
+        "V5"
+      ]
+    },
+    {
+      "name": "都市禪 (Urban Zen)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im11",
+        "im11",
+        "bIImaj7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "霓虹雨 (Neon Rain)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bVImaj7",
+        "bVIImaj7",
+        "im9",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "City Pop 散步 (City Pop Stroll)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "VI7",
+        "IVmaj7",
+        "bVII9"
+      ]
+    },
+    {
+      "name": "深夜收音機 (Late Night Radio)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "bVIImaj7",
+        "iii7",
+        "VI7"
+      ]
+    },
+    {
+      "name": "抽象漂流 (Abstract Drift)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bIImaj7",
+        "bVImaj7",
+        "bIIImaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "波浪退潮 (Wave Retreat)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vi9",
+        "iii7",
+        "IVmaj7",
+        "Imaj7"
+      ]
+    },
+    {
+      "name": "電梯靈魂 (Elevator Soul)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "III7",
+        "IVmaj7",
+        "iv7"
+      ]
+    },
+    {
+      "name": "玻璃心跳 (Glass Heartbeat)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "VI9",
+        "III9",
+        "VII9"
+      ]
+    },
+    {
+      "name": "平流層 (Stratosphere)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "bIIImaj7",
+        "Imaj7",
+        "bVImaj7"
+      ]
+    },
+    {
+      "name": "K-Pop 主歌圈 (K-Pop Verse Loop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vi7",
+        "ii7",
+        "IVmaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "電影感過場 (Cinematic Pass)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "bVII9",
+        "iii7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "蒸汽波漂浮 (Vaporwave Float)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bVImaj7",
+        "IV9",
+        "bVIImaj7",
+        "V9"
+      ]
+    },
+    {
+      "name": "月台等待 (Platform Wait)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj9",
+        "iii9",
+        "IVmaj9",
+        "V7sus4"
+      ]
+    },
+    {
+      "name": "Trap 深海 (Trap Deep Sea)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "bIImaj7",
+        "bIIImaj7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "仙境入口 (Fairy Gate)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "I",
+        "bVII",
+        "bVI",
+        "bVII"
+      ]
+    },
+    {
+      "name": "Future Bass 爆發 (Future Bass Drop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vi9",
+        "IVmaj7",
+        "bVImaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "Lo-fi 午睡 (Lo-fi Nap)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "iii7",
+        "vi9",
+        "IVmaj7"
+      ]
+    },
+    {
+      "name": "Phonk 地獄 (Phonk Inferno)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im7",
+        "bVImaj7",
+        "im7",
+        "V7b9"
+      ]
+    },
+    {
+      "name": "深夜 R&B (Late Night R&B)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj9",
+        "vi11",
+        "bVII9",
+        "IV9"
+      ]
+    },
+    {
+      "name": "靈魂鬼魂 (Soul Ghost)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "VII9",
+        "bVImaj7",
+        "VII9"
+      ]
+    },
+    {
+      "name": "無重力 (Zero Gravity)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bIIImaj7",
+        "bVIImaj7",
+        "IVmaj7",
+        "bVImaj7"
+      ]
+    },
+    {
+      "name": "霧中燈塔 (Lighthouse in Fog)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im7",
+        "bIImaj7#11",
+        "im7",
+        "VII7"
+      ]
+    },
+    {
+      "name": "異次元門 (Portal Loop)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "bIImaj7",
+        "Imaj7",
+        "bIImaj7",
+        "VII7"
+      ]
+    },
+    {
+      "name": "Bedroom Pop 被窩 (Bedroom Burrow)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "V/II",
+        "ii9",
+        "IVadd9"
+      ]
+    },
+    {
+      "name": "頻道切換 (Channel Flip)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "ii9",
+        "bIImaj7",
+        "Imaj7",
+        "bVIImaj7"
+      ]
+    },
+    {
+      "name": "超現實沙灘 (Surreal Beach)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "IVmaj7",
+        "bVImaj7",
+        "IVmaj7",
+        "bIImaj7"
+      ]
+    },
+    {
+      "name": "暗能量 (Dark Energy)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "bVII7",
+        "bVI7#11",
+        "V7b9"
+      ]
+    },
+    {
+      "name": "Chill Trap 單人 (Chill Trap Solo)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "vi9",
+        "IV9",
+        "vi9",
+        "IV9"
+      ]
+    },
+    {
+      "name": "回聲室 (Echo Chamber)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "Imaj7",
+        "bVImaj7",
+        "bIIImaj7",
+        "IV9"
+      ]
+    },
+    {
+      "name": "慢燃餘燼 (Ember Slow Burn)",
+      "category": "Loop & Vibe (Hip-Hop / K-Pop)",
+      "numerals": [
+        "im9",
+        "bVImaj7",
+        "bVIImaj7",
+        "im9"
+      ]
+    }
+  ]
+}
