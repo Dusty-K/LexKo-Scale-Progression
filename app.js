@@ -59,7 +59,21 @@ const btnNextProg = document.getElementById('btn-next-prog');
 
 // State
 let baseOctave = 3;
-const NUM_OCTAVES = 2; // Show 2 octaves on the piano
+function getInitialOctaves() {
+    return window.innerWidth <= 768 ? 1 : 2; // 手機預設顯示 1 個八度，電腦顯示 2 個
+}
+
+let NUM_OCTAVES = getInitialOctaves();
+
+// 監聽視窗縮放，確保在旋轉螢幕時能自動調整
+window.addEventListener('resize', () => {
+    const newOctaves = getInitialOctaves();
+    if (newOctaves !== NUM_OCTAVES) {
+        NUM_OCTAVES = newOctaves;
+        renderPiano();
+        updateScale();
+    }
+});
 let currentScale = [];
 let currentScaleNotesWithOctave = [];
 let currentProgression = []; // Stores {name, originalNumeral, notes, data}
@@ -688,7 +702,7 @@ function showChordTones(displayName, chordName, chordData) {
     // Play the chord on click for preview
     if (audioContextStarted) {
         const pIdx = currentProgression.findIndex(c => c.name === chordName);
-        const notesToPlay = pIdx >= 0 ? currentProgression[pIdx].notes : 
+        const notesToPlay = pIdx >= 0 ? currentProgression[pIdx].notes :
             tones.map((n, idx) => `${Tonal.Note.simplify(n)}${idx === 0 ? baseOctave : baseOctave + 1}`);
         if (notesToPlay.length > 0) activeSynth.triggerAttackRelease(notesToPlay, '2n');
     }

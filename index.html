@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LexKo - Scale & Progression Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,9 +102,12 @@
                                 <p id="current-scale-notes" class="notes-display" style="margin-top: 0.5rem;">C D E F G
                                     A B</p>
                             </div>
-                            <div class="actions-group" style="flex-direction: row; margin: 0; align-items: center; flex-wrap: wrap;">
-                                <button id="btn-play-scale" class="btn primary-btn"><span class="icon">▶</span> Play Scale</button>
-                                <button id="btn-download-midi" class="btn secondary-btn"><span class="icon">📥</span> MIDI</button>
+                            <div class="actions-group"
+                                style="flex-direction: row; margin: 0; align-items: center; flex-wrap: wrap;">
+                                <button id="btn-play-scale" class="btn primary-btn"><span class="icon">▶</span> Play
+                                    Scale</button>
+                                <button id="btn-download-midi" class="btn secondary-btn"><span class="icon">📥</span>
+                                    MIDI</button>
                                 <button id="btn-toggle-piano" class="btn secondary-btn"
                                     style="border-color: rgba(255,255,255,0.4);">🎹 Toggle Piano</button>
                             </div>
@@ -149,12 +152,14 @@
                 <div class="emotion-presets"
                     style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 8px;">
                     <!-- Prev / Next navigation -->
-                    <button id="btn-prev-prog" class="btn btn-secondary" style="padding: 0.5rem 0.75rem;" title="Previous Progression">◀</button>
+                    <button id="btn-prev-prog" class="btn btn-secondary" style="padding: 0.5rem 0.75rem;"
+                        title="Previous Progression">◀</button>
                     <select id="preset-select" class="modern-select"
                         style="padding: 0.5rem; flex: 1; min-width: 200px;">
                         <option value="">-- 正在載入和弦庫... (Loading...) --</option>
                     </select>
-                    <button id="btn-next-prog" class="btn btn-secondary" style="padding: 0.5rem 0.75rem;" title="Next Progression">▶</button>
+                    <button id="btn-next-prog" class="btn btn-secondary" style="padding: 0.5rem 0.75rem;"
+                        title="Next Progression">▶</button>
                     <!-- Random + Scope -->
                     <button class="btn btn-secondary" id="btn-random-prog" style="padding: 0.5rem 1rem;"><span
                             class="icon">🎲</span> Random</button>
@@ -179,9 +184,11 @@
 
                 <!-- Chord Tones Panel (replaces suggestion panel) -->
                 <div class="chord-tones-panel" id="chord-tones-panel" style="display: none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                         <h4>🎵 <span id="tones-target-chord"></span></h4>
-                        <button onclick="document.getElementById('chord-tones-panel').style.display='none'" class="btn-small">✕</button>
+                        <button onclick="document.getElementById('chord-tones-panel').style.display='none'"
+                            class="btn-small">✕</button>
                     </div>
                     <div id="tones-content" class="tones-content"></div>
                 </div>
