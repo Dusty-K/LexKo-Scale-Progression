@@ -116,6 +116,7 @@ const instrumentPresets = {
 };
 
 const synth = new Tone.PolySynth(Tone.Synth, instrumentPresets['electric-piano']).toDestination();
+synth.volume.value = -12; // 降低合成器音量，防止破音
 
 // Realistic Sampler
 const pianoSampler = new Tone.Sampler({
@@ -131,6 +132,7 @@ const pianoSampler = new Tone.Sampler({
     },
     baseUrl: "https://tonejs.github.io/audio/salamander/"
 }).toDestination();
+pianoSampler.volume.value = 5; // 提高鋼琴採樣音量
 
 let activeSynth = pianoSampler; // default to realistic piano
 
