@@ -1050,11 +1050,27 @@ footer {
         width: 100%;
     }
 
+    .chord-results-container {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .chord-results-container::-webkit-scrollbar {
+        display: none;
+    }
+
     .chord-card {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
-        flex: 1;
-        min-width: 60px;
+        padding: 0.8rem 1rem !important;
+        font-size: 0.9rem !important;
+        flex: 0 0 auto !important; /* 防止被擠壓 */
+        min-width: 80px !important;
+        text-align: center;
+        white-space: nowrap;
     }
 
     /* Touch Highlighting */
