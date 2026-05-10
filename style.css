@@ -15,6 +15,9 @@
     --key-active: #a78bfa;
     --key-active-shadow: 0 0 15px rgba(167, 139, 250, 0.8);
     
+    --key-w-white: 50px;
+    --key-w-black: 30px;
+    
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -318,7 +321,7 @@ label {
 }
 
 .key-white {
-    width: 50px;
+    width: var(--key-w-white);
     height: 100%;
     background: linear-gradient(to bottom, #fff 0%, #eee 100%);
     border: 1px solid #ccc;
@@ -335,7 +338,7 @@ label {
 }
 
 .key-black {
-    width: 30px;
+    width: var(--key-w-black);
     height: 60%;
     background: linear-gradient(to bottom, #333 0%, #111 100%);
     border: 1px solid #000;
@@ -555,9 +558,20 @@ footer {
 
 /* === Responsive (Mobile) === */
 @media (max-width: 768px) {
+    :root {
+        --key-w-white: 32px;
+        --key-w-black: 20px;
+    }
+
     .app-container {
         padding: 0.75rem;
         gap: 0.75rem;
+        overflow-x: hidden;
+    }
+
+    .modern-input, #quick-search {
+        max-width: 100% !important;
+        width: 100% !important;
     }
 
     header {
@@ -585,20 +599,31 @@ footer {
 
     .horizontal-controls {
         flex-direction: column;
+        align-items: stretch;
     }
 
     .key-selector-group {
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .circle-keys {
         border-left: none !important;
         padding-left: 0 !important;
+        justify-content: flex-start;
+    }
+
+    #accidental-keys {
+        padding-top: 0.5rem;
+        border-top: 1px solid var(--panel-border);
     }
 
     .base-key-btn, .accidental-btn, .type-btn, .display-btn {
         padding: 0.5rem 0.6rem;
         font-size: 0.85rem;
+        flex: 1;
+        min-width: 40px;
+        text-align: center;
     }
 
     .visualizer-panel {
@@ -606,9 +631,14 @@ footer {
     }
 
     .info-card {
-        padding: 0.75rem 1rem !important;
+        padding: 1rem !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: stretch !important;
+        text-align: center !important;
+    }
+
+    .info-card > div {
+        width: 100%;
     }
 
     #current-scale-name {
@@ -616,19 +646,19 @@ footer {
     }
 
     .actions-group[style] {
-        flex-wrap: wrap;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        width: 100%;
+    }
+
+    .actions-group .btn {
+        width: 100% !important;
+        margin: 0 !important;
     }
 
     .piano {
         height: 140px;
-    }
-
-    .key-white {
-        width: 32px;
-    }
-
-    .key-black {
-        width: 20px;
     }
 
     .key-label {
@@ -643,7 +673,11 @@ footer {
 
     .panel-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+    }
+
+    .panel-header h2 {
+        font-size: 1.1rem;
     }
 
     .panel-header .control-group {
@@ -656,14 +690,25 @@ footer {
 
     .emotion-presets {
         gap: 0.4rem;
+        justify-content: center;
     }
 
     #preset-select {
-        min-width: 150px !important;
+        min-width: 100% !important;
+        order: -1;
+    }
+
+    #btn-prev-prog, #btn-next-prog {
+        flex: 1;
+    }
+
+    #btn-random-prog {
+        flex: 2;
     }
 
     #random-scope-select {
-        min-width: 90px !important;
+        flex: 1;
+        min-width: 80px !important;
     }
 
     .input-with-button {
@@ -678,19 +723,32 @@ footer {
     .chord-results-container {
         gap: 0.5rem;
         padding: 0.75rem;
+        justify-content: center;
     }
 
     .chord-card {
-        padding: 0.6rem 1rem;
-        font-size: 1rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 60px;
+        text-align: center;
     }
 
     .progression-actions {
         flex-direction: column;
+        gap: 0.5rem;
     }
 
     .progression-actions .btn {
         width: 100%;
+        justify-content: center;
+    }
+
+    .chord-tones-panel {
+        padding: 0.75rem;
+    }
+
+    .tones-row {
         justify-content: center;
     }
 }
