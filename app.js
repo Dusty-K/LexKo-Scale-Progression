@@ -47,13 +47,15 @@ const instrumentSelect = document.getElementById('instrument-select');
 const progressionInput = document.getElementById('progression-input');
 const btnAnalyze = document.getElementById('btn-analyze');
 const chordResults = document.getElementById('chord-results');
-const suggestionPanel = document.getElementById('suggestion-panel');
-const suggTargetChord = document.getElementById('sugg-target-chord');
-const suggContent = document.getElementById('sugg-content');
+const suggestionPanel = document.getElementById('chord-tones-panel');
+const suggTargetChord = document.getElementById('tones-target-chord');
+const suggContent = document.getElementById('tones-content');
 const presetSelect = document.getElementById('preset-select');
 const randomScopeSelect = document.getElementById('random-scope-select');
 const btnPlayProg = document.getElementById('btn-play-prog');
 const btnDownloadProgMidi = document.getElementById('btn-download-prog-midi');
+const btnPrevProg = document.getElementById('btn-prev-prog');
+const btnNextProg = document.getElementById('btn-next-prog');
 
 // State
 let baseOctave = 3;
@@ -248,6 +250,26 @@ function init() {
     }
     btnPlayProg.addEventListener('click', playProgression);
     btnDownloadProgMidi.addEventListener('click', downloadProgressionMidi);
+
+    // Prev / Next navigation through preset list
+    function stepPreset(delta) {
+        if (!presetSelect || presetSelect.options.length < 2) return;
+        let idx = presetSelect.selectedIndex + delta;
+        // skip optgroup headers and blank first option
+        while (idx >= 0 && idx < presetSelect.options.length && !presetSelect.options[idx].value) {
+            idx += delta;
+        }
+        if (idx < 0 || idx >= presetSelect.options.length) return;
+        presetSelect.selectedIndex = idx;
+        const val = presetSelect.options[idx].value;
+        if (val) {
+            currentProgressionName = presetSelect.options[idx].text;
+            progressionInput.value = val;
+            analyzeProgression();
+        }
+    }
+    if (btnPrevProg) btnPrevProg.addEventListener('click', () => stepPreset(-1));
+    if (btnNextProg) btnNextProg.addEventListener('click', () => stepPreset(1));
 
 
     btnOctaveUp.addEventListener('click', () => {
@@ -619,44 +641,57 @@ function analyzeProgression() {
         const card = document.createElement('div');
         card.className = 'chord-card';
         card.innerText = displayChordName;
-        card.addEventListener('click', () => showSuggestions(chordName, chordData));
+        card.addEventListener('click', () => showChordTones(displayChordName, chordName, chordData));
         chordResults.appendChild(card);
     });
 }
 
-function showSuggestions(chordName, chordData) {
-    suggestionPanel.style.display = 'block';
-    suggTargetChord.innerText = chordName;
-    suggContent.innerHTML = '';
+// Show chord tones when a chord card is clicked
+function showChordTones(displayName, chordName, chordData) {
+    const panel = document.getElementById('chord-tones-panel');
+    if (!panel) return;
 
-    const extensions = chordData.extensions || [];
-    let html = '<strong>Extensions:</strong> ';
-    if (extensions.length === 0) {
-        html += 'None common. ';
-    } else {
-        extensions.slice(0, 4).forEach(ext => {
-            // Reconstruct the root + extension. Tonal extensions are like "maj9", "69"
-            const extName = chordData.tonic + ext;
-            html += `<span class="suggestion-chip" onclick="applySuggestion('${extName}')">${extName}</span>`;
-        });
+    // Toggle off if same chord clicked again
+    if (suggTargetChord.innerText === displayName && panel.style.display !== 'none') {
+        panel.style.display = 'none';
+        return;
     }
 
-    // Add Triton Sub if it's a dominant 7th
-    if (chordData.aliases.includes('7')) {
-        const tritoneSubRoot = Tonal.Note.transpose(chordData.tonic, '5d');
-        html += `<br><br><strong>Tritone Substitution:</strong> <span class="suggestion-chip" onclick="applySuggestion('${tritoneSubRoot}7')">${tritoneSubRoot}7</span>`;
+    panel.style.display = 'block';
+    suggTargetChord.innerText = displayName;
+
+    // Get notes — prefer the main chord for slash chords
+    const mainName = chordName.split('/')[0];
+    const mainData = Tonal.Chord.get(mainName);
+    const tones = (mainData.notes && mainData.notes.length > 0 ? mainData.notes : chordData.notes || []);
+    const intervals = mainData.intervals || [];
+    const chordType = mainData.quality || mainData.type || '';
+
+    let html = `<div class="tones-row">`;
+    tones.forEach((note, i) => {
+        const formatted = formatNoteName(note);
+        const interval = intervals[i] || '';
+        html += `<div class="tone-chip"><span class="tone-note">${formatted}</span><span class="tone-interval">${interval}</span></div>`;
+    });
+    html += `</div>`;
+
+    if (chordType) {
+        html += `<div class="tones-meta">Quality: <strong>${chordType}</strong>`;
+        if (mainData.aliases && mainData.aliases.length > 0) {
+            html += ` &nbsp;·&nbsp; Aliases: <strong>${mainData.aliases.slice(0, 4).join(', ')}</strong>`;
+        }
+        html += `</div>`;
     }
 
     suggContent.innerHTML = html;
-}
 
-window.applySuggestion = function (newChord) {
-    suggTargetChord.innerText = `${newChord} (Previewing)`;
-    // Play the suggested chord
-    if (!audioContextStarted) return;
-    const data = Tonal.Chord.get(newChord);
-    const notes = data.notes.map((n, idx) => `${Tonal.Note.simplify(n)}${idx === 0 ? baseOctave : baseOctave + 1}`);
-    activeSynth.triggerAttackRelease(notes, "2n");
+    // Play the chord on click for preview
+    if (audioContextStarted) {
+        const pIdx = currentProgression.findIndex(c => c.name === chordName);
+        const notesToPlay = pIdx >= 0 ? currentProgression[pIdx].notes : 
+            tones.map((n, idx) => `${Tonal.Note.simplify(n)}${idx === 0 ? baseOctave : baseOctave + 1}`);
+        if (notesToPlay.length > 0) activeSynth.triggerAttackRelease(notesToPlay, '2n');
+    }
 }
 
 function playProgression() {
@@ -703,9 +738,13 @@ function downloadProgressionMidi() {
         const link = document.createElement('a');
         link.href = url;
 
-        // Format: Key + Name (e.g., C_Royal_Road)
+        // Filename: Root + ScaleType + ProgressionName
+        // e.g. "C_Minor_Royal_Road.mid"
+        const safeScale = currentScaleName.innerText
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_]/gi, '');
         const safeName = currentProgressionName.replace(/[^a-z0-9]/gi, '_');
-        const fileName = `${currentRoot}_${safeName}.mid`;
+        const fileName = `${safeScale}_${safeName}.mid`;
 
         link.download = fileName;
         document.body.appendChild(link);

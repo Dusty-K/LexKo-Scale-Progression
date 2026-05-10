@@ -506,22 +506,192 @@ footer {
     justify-content: flex-end;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    main {
-        grid-template-columns: 1fr;
+/* === Chord Tones Panel === */
+.chord-tones-panel {
+    background: rgba(30, 41, 59, 0.9);
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+.chord-tones-panel h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--primary-hover);
+}
+.tones-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+}
+.tone-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    min-width: 44px;
+}
+.tone-note {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-hover);
+}
+.tone-interval {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.tones-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* === Responsive (Mobile) === */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0.75rem;
+        gap: 0.75rem;
     }
-    
+
+    header {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h1 .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .status-indicator {
+        font-size: 0.75rem;
+    }
+
+    .controls-panel {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .horizontal-controls {
+        flex-direction: column;
+    }
+
+    .key-selector-group {
+        flex-wrap: wrap;
+    }
+
+    .circle-keys {
+        border-left: none !important;
+        padding-left: 0 !important;
+    }
+
+    .base-key-btn, .accidental-btn, .type-btn, .display-btn {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .visualizer-panel {
+        padding: 0.75rem;
+    }
+
+    .info-card {
+        padding: 0.75rem 1rem !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    #current-scale-name {
+        font-size: 1.5rem !important;
+    }
+
+    .actions-group[style] {
+        flex-wrap: wrap;
+    }
+
     .piano {
-        height: 200px;
+        height: 140px;
     }
-    
+
     .key-white {
-        width: 40px;
+        width: 32px;
     }
-    
+
     .key-black {
-        width: 24px;
+        width: 20px;
+    }
+
+    .key-label {
+        font-size: 0.6rem !important;
+        bottom: 4px;
+    }
+
+    .progression-panel {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .panel-header .control-group {
+        width: 100%;
+    }
+
+    .panel-header .control-group select {
+        width: 100%;
+    }
+
+    .emotion-presets {
+        gap: 0.4rem;
+    }
+
+    #preset-select {
+        min-width: 150px !important;
+    }
+
+    #random-scope-select {
+        min-width: 90px !important;
+    }
+
+    .input-with-button {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .input-with-button .btn {
+        width: 100%;
+    }
+
+    .chord-results-container {
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .chord-card {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+
+    .progression-actions {
+        flex-direction: column;
+    }
+
+    .progression-actions .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 
