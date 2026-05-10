@@ -24,7 +24,17 @@ function formatNoteName(noteName) {
         }
         const chroma = Tonal.Note.get(simplified).chroma;
         if (chroma === undefined || chroma === null) return simplified;
-        return currentDisplayPref === "sharp" ? NOTES_SHARP[chroma] : NOTES_FLAT[chroma];
+        
+        // Smart Default: If theory is selected but an accidental is active, prefer that accidental's display
+        let pref = currentDisplayPref;
+        if (pref === "theory") {
+            if (currentAccidental === "#") pref = "sharp";
+            else if (currentAccidental === "b") pref = "flat";
+        }
+
+        if (pref === "sharp") return NOTES_SHARP[chroma];
+        if (pref === "flat") return NOTES_FLAT[chroma];
+        return simplified;
     } catch (e) {
         return noteName;
     }
@@ -166,6 +176,7 @@ function init() {
     // Event Listeners
     baseKeyBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            if (quickSearchInput) quickSearchInput.value = "";
             baseKeyBtns.forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
             currentBaseKey = e.target.dataset.val;
@@ -177,9 +188,22 @@ function init() {
 
     accidentalBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            accidentalBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentAccidental = e.target.dataset.val;
+            const val = e.target.dataset.val;
+            if (quickSearchInput) quickSearchInput.value = "";
+            // Toggle behavior: if already active, set to none (natural)
+            if (currentAccidental === val) {
+                currentAccidental = "";
+            } else {
+                currentAccidental = val;
+            }
+            
+            accidentalBtns.forEach(b => {
+                b.classList.remove('active');
+                if (b.dataset.val === currentAccidental && currentAccidental !== "") {
+                    b.classList.add('active');
+                }
+            });
+            
             currentRoot = currentBaseKey + currentAccidental;
             updateScale();
             analyzeProgression();
@@ -188,15 +212,27 @@ function init() {
 
     displayBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            displayBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentDisplayPref = e.target.dataset.val;
+            const val = e.target.dataset.val;
+            // Toggle behavior: if already active, set back to theory (smart default)
+            if (currentDisplayPref === val) {
+                currentDisplayPref = "theory";
+            } else {
+                currentDisplayPref = val;
+            }
+
+            displayBtns.forEach(b => {
+                b.classList.remove('active');
+                if (b.dataset.val === currentDisplayPref) {
+                    b.classList.add('active');
+                }
+            });
             updateScale();
         });
     });
 
     typeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            if (quickSearchInput) quickSearchInput.value = "";
             typeBtns.forEach(b => b.classList.remove('active'));
             scaleTypeOther.value = "";
             e.target.classList.add('active');
@@ -209,6 +245,7 @@ function init() {
     if (scaleTypeOther) {
         scaleTypeOther.addEventListener('change', (e) => {
             if (e.target.value !== "") {
+                if (quickSearchInput) quickSearchInput.value = "";
                 typeBtns.forEach(b => b.classList.remove('active'));
                 currentScaleType = e.target.value;
                 updateScale();
@@ -218,7 +255,8 @@ function init() {
     }
 
     btnTogglePiano.addEventListener('click', () => {
-        pianoSection.classList.toggle('collapsed');
+        const isCollapsed = pianoSection.classList.toggle('collapsed');
+        btnTogglePiano.innerText = isCollapsed ? '🎹 Open Piano' : '🎹 Close Piano';
     });
 
     btnRandomProg.addEventListener('click', () => {

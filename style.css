@@ -984,6 +984,7 @@ footer {
         font-size: 0.8rem !important;
         min-width: 35px !important;
         text-align: center;
+        white-space: nowrap !important; /* 防止文字折行導致高度不一 */
     }
 
     #accidental-keys {
