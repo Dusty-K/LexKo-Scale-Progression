@@ -30,12 +30,13 @@
         </header>
 
         <main>
-            <div class="top-row">
+            <div class="top-row" style="grid-template-columns: 1fr;">
                 <!-- Controls Area (Horizontal) -->
                 <section class="controls-panel glass-panel horizontal-controls">
-                    <div class="control-group">
+                    <div class="control-group" style="width: 100%; margin-bottom: -1rem;">
                         <label for="quick-search">Quick Search (e.g. Cm, F# maj, Ab minor)</label>
-                        <input type="text" id="quick-search" class="modern-input" placeholder="Type a scale...">
+                        <input type="text" id="quick-search" class="modern-input" placeholder="Type a scale..."
+                            style="width: 100%; max-width: 400px; font-size: 1.1rem; font-weight: bold; color: var(--primary-hover);">
                     </div>
 
                     <div class="control-group">
@@ -92,14 +93,17 @@
                 </section>
 
                 <!-- Results & Visualizer Area -->
-                <section class="visualizer-panel glass-panel">
+                <section class="visualizer-panel glass-panel" style="padding-top: 1rem;">
                     <div class="panel-header" style="justify-content: flex-start; gap: 2rem; flex-wrap: wrap;">
-                        <div class="info-card">
+                        <div class="info-card"
+                            style="margin: 0; padding: 1rem 2rem; flex: 1; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <h3 id="current-scale-name">C Major</h3>
-                                <p id="current-scale-notes" class="notes-display">C D E F G A B</p>
+                                <h3 id="current-scale-name" style="margin: 0; font-size: 2rem;">C Major</h3>
+                                <p id="current-scale-notes" class="notes-display" style="margin-top: 0.5rem;">C D E F G
+                                    A B</p>
                             </div>
-                            <div class="actions-group">
+                            <div class="actions-group"
+                                style="flex-direction: row; margin: 0; align-items: center; flex-wrap: wrap;">
                                 <button id="btn-play-scale" class="btn primary-btn"><span class="icon">▶</span> Play
                                     Scale</button>
                                 <button id="btn-download-midi" class="btn secondary-btn"><span class="icon">📥</span>
