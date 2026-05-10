@@ -332,11 +332,8 @@ function renderPiano() {
 
         if (isBlack) {
             key.className = 'key key-black';
-            // Position black keys
-            // Black keys are located between white keys.
-            // whiteKeyIndex is currently the index of the NEXT white key.
-            // We want it to be centered on the line between whiteKeyIndex - 1 and whiteKeyIndex.
-            key.style.left = `calc(${whiteKeyIndex} * var(--key-w-white))`;
+            // Position black keys using the padding variable from CSS
+            key.style.left = `calc(var(--piano-padding) + ${whiteKeyIndex} * var(--key-w-white))`;
         } else {
             key.className = 'key key-white';
             whiteKeyIndex++;
