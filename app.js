@@ -24,7 +24,7 @@ function formatNoteName(noteName) {
         }
         const chroma = Tonal.Note.get(simplified).chroma;
         if (chroma === undefined || chroma === null) return simplified;
-        
+
         // Smart Default: If theory is selected but an accidental is active, prefer that accidental's display
         let pref = currentDisplayPref;
         if (pref === "theory") {
@@ -198,14 +198,14 @@ function init() {
             } else {
                 currentAccidental = val;
             }
-            
+
             accidentalBtns.forEach(b => {
                 b.classList.remove('active');
                 if (b.dataset.val === currentAccidental && currentAccidental !== "") {
                     b.classList.add('active');
                 }
             });
-            
+
             currentRoot = currentBaseKey + currentAccidental;
             updateScale();
             analyzeProgression();
@@ -766,6 +766,20 @@ function playProgression() {
     });
 }
 
+// Helper: convert a note's pitch class to sharp or flat based on currentAccidental.
+// Only called at MIDI export time — does NOT affect display or playback.
+function resolveNoteForMidi(noteWithOctave) {
+    if (!currentAccidental) return noteWithOctave;
+    // Split note name from octave number (e.g. "Bb3" -> pc="Bb", oct="3")
+    const parsed = Tonal.Note.get(noteWithOctave);
+    if (!parsed || parsed.empty) return noteWithOctave;
+    const chroma = parsed.chroma;
+    const oct = parsed.oct;
+    if (chroma === undefined || chroma === null || oct === undefined) return noteWithOctave;
+    const pc = currentAccidental === '#' ? NOTES_SHARP[chroma] : NOTES_FLAT[chroma];
+    return `${pc}${oct}`;
+}
+
 function downloadProgressionMidi() {
     if (currentProgression.length === 0) return;
 
@@ -776,7 +790,7 @@ function downloadProgressionMidi() {
         currentProgression.forEach((chord, i) => {
             chord.notes.forEach(note => {
                 track.addNote({
-                    name: note,
+                    name: resolveNoteForMidi(note), // ← convert enharmonic at export time only
                     time: i * 1.0, // 1 second per chord
                     duration: 0.9,
                     velocity: 0.8
@@ -789,12 +803,13 @@ function downloadProgressionMidi() {
         const link = document.createElement('a');
         link.href = url;
 
-        // Filename: Root + ScaleType + ProgressionName
-        // e.g. "C_Minor_Royal_Road.mid"
-        const safeScale = currentScaleName.innerText
+        // Filename: keep '#' and 'b' — only strip truly illegal filesystem chars
+        const safeScale = currentScaleName.innerText.trim()
             .replace(/\s+/g, '_')
-            .replace(/[^a-z0-9_]/gi, '');
-        const safeName = currentProgressionName.replace(/[^a-z0-9]/gi, '_');
+            .replace(/[\\/:*?"<>|]/g, '');
+        const safeName = currentProgressionName.trim()
+            .replace(/\s+/g, '_')
+            .replace(/[\\/:*?"<>|]/g, '');
         const fileName = `${safeScale}_${safeName}.mid`;
 
         link.download = fileName;
