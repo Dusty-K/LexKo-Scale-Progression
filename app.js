@@ -119,6 +119,7 @@ const synth = new Tone.PolySynth(Tone.Synth, instrumentPresets['electric-piano']
 synth.volume.value = -12; // 降低合成器音量，防止破音
 
 // Realistic Sampler
+let samplerReady = false;
 const pianoSampler = new Tone.Sampler({
     urls: {
         "A0": "A0.mp3", "C1": "C1.mp3", "D#1": "Ds1.mp3", "F#1": "Fs1.mp3",
@@ -130,7 +131,14 @@ const pianoSampler = new Tone.Sampler({
         "A6": "A6.mp3", "C7": "C7.mp3", "D#7": "Ds7.mp3", "F#7": "Fs7.mp3",
         "A7": "A7.mp3", "C8": "C8.mp3"
     },
-    baseUrl: "https://tonejs.github.io/audio/salamander/"
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+    onload: () => { samplerReady = true; },
+    onerror: (err) => {
+        console.warn('Piano sampler failed to load, falling back to synth:', err);
+        samplerReady = false;
+        activeSynth = synth; // fallback to PolySynth
+        if (instrumentSelect) instrumentSelect.value = 'electric-piano';
+    }
 }).toDestination();
 pianoSampler.volume.value = 5; // 提高鋼琴採樣音量
 
@@ -151,11 +159,23 @@ function changeInstrument() {
 
 // Tone.js needs a user gesture to start audio context
 let audioContextStarted = false;
-document.body.addEventListener('click', async () => {
+document.body.addEventListener('click', () => {
     if (!audioContextStarted) {
-        await Tone.start();
-        audioContextStarted = true;
-        document.querySelector('.status-indicator').innerHTML = '<div class="dot" style="background-color: #10b981; box-shadow: 0 0 8px #10b981;"></div> Audio Engine Active';
+        const startTimeout = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Tone.start() timeout')), 3000)
+        );
+        Promise.race([Tone.start(), startTimeout])
+            .then(() => {
+                audioContextStarted = true;
+                document.querySelector('.status-indicator').innerHTML =
+                    '<div class="dot" style="background-color: #10b981; box-shadow: 0 0 8px #10b981;"></div> Audio Engine Active';
+            })
+            .catch((err) => {
+                console.warn('Audio context could not start:', err);
+                audioContextStarted = true;
+                document.querySelector('.status-indicator').innerHTML =
+                    '<div class="dot" style="background-color: #f59e0b; box-shadow: 0 0 8px #f59e0b;"></div> Audio Limited';
+            });
     }
 }, { once: true });
 
